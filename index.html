@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Server</title>
+
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .box {
+      border: 1px solid #00ff00;
+      padding: 20px;
+      width: 600px;
+    }
+
+    .blink {
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    button {
+      background: black;
+      color: #00ff00;
+      border: 1px solid #00ff00;
+      padding: 10px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background: #00ff00;
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h2>LOVE SERVER v2.0</h2>
+
+    <p>⚠️ SYSTEM ALERT ⚠️</p>
+
+    <p>
+      Birthday archive has been encrypted.<br>
+      Unauthorized access detected.<br><br>
+
+      Mission: Recover the files.
+    </p>
+
+    <p class="blink">_ waiting for user input</p>
+
+    <a href="login.html">
+      <button>START MISSION</button>
+    </a>
+  </div>
+
+</body>
+</html>
