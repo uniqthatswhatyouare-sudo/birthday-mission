@@ -16,19 +16,7 @@ body{
   white-space: pre-line;
   font-size: 18px;
 }
-
-.cursor {
-  display:inline-block;
-  width:10px;
-  background:lime;
-  animation: blink 0.8s infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
 </style>
-
 </head>
 
 <body>
@@ -40,7 +28,7 @@ body{
 <script>
 const lines = [
 "Connecting to encrypted signal...",
-"Signal found.",
+"Signal acquired.",
 "Decoding base64 payload...",
 "",
 "R29vZC4gVGhlIG1lc3NhZ2UgaXMgaW5jb21wbGV0ZS4=",
@@ -60,15 +48,14 @@ function typeLine() {
     i++;
     setTimeout(typeLine, 900);
   } else {
-    setTimeout(showInput, 500);
+    showInput();
   }
 }
 
 function showInput() {
-  msg.innerHTML += "\nENTER DECRYPTED KEY BELOW:\n";
+  msg.innerHTML += "\nENTER DECRYPTED KEY:\n<br>";
 
   msg.innerHTML += `
-    <br>
     <input id="answer" type="text" style="padding:5px;">
     <button onclick="check()">Submit</button>
   `;
@@ -77,7 +64,7 @@ function showInput() {
 function check() {
   let input = document.getElementById("answer").value.toLowerCase();
 
-  if(input.includes("rot") || input.includes("7")) {
+  if (input.includes("rot") || input.includes("7")) {
     window.location.href = "level3.html";
   } else {
     alert("ACCESS DENIED");
