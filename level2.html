@@ -2,33 +2,90 @@
 <html>
 <head>
 <title>Level 2</title>
+
 <style>
 body{
-background:black;
-color:lime;
-font-family:monospace;
-text-align:center;
-padding-top:80px;
+  background:black;
+  color:lime;
+  font-family:monospace;
+  text-align:center;
+  padding-top:60px;
+}
+
+#msg {
+  white-space: pre-line;
+  font-size: 18px;
+}
+
+.cursor {
+  display:inline-block;
+  width:10px;
+  background:lime;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }
 </style>
+
 </head>
 
 <body>
 
 <h1>TRANSMISSION INTERCEPTED</h1>
 
-<p>
-Decode the following transmission:
-</p>
+<div id="msg"></div>
 
-  
-<h2>
-R29vZC4gVGhlIG1lc3NhZ2UgaXMgaW5jb21wbGV0ZS4KU2Vjb25kYXJ5IGVuY3J5cHRpb24gZGV0ZWN0ZWQuClJPVC03IHJlcXVpcmVkLg==
-</h2>
+<script>
+const lines = [
+"Connecting to encrypted signal...",
+"Signal found.",
+"Decoding base64 payload...",
+"",
+"R29vZC4gVGhlIG1lc3NhZ2UgaXMgaW5jb21wbGV0ZS4=",
+"",
+"Decoding complete.",
+"",
+"Secondary encryption detected.",
+"ROT-7 REQUIRED."
+];
 
-<p>
-No further instructions.
-</p>
+let i = 0;
+let msg = document.getElementById("msg");
+
+function typeLine() {
+  if (i < lines.length) {
+    msg.innerHTML += lines[i] + "\n";
+    i++;
+    setTimeout(typeLine, 900);
+  } else {
+    setTimeout(showInput, 500);
+  }
+}
+
+function showInput() {
+  msg.innerHTML += "\nENTER DECRYPTED KEY BELOW:\n";
+
+  msg.innerHTML += `
+    <br>
+    <input id="answer" type="text" style="padding:5px;">
+    <button onclick="check()">Submit</button>
+  `;
+}
+
+function check() {
+  let input = document.getElementById("answer").value.toLowerCase();
+
+  if(input.includes("rot") || input.includes("7")) {
+    window.location.href = "level3.html";
+  } else {
+    alert("ACCESS DENIED");
+  }
+}
+
+typeLine();
+</script>
 
 </body>
 </html>
