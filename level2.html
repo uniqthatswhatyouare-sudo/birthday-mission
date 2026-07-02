@@ -30,13 +30,15 @@ const lines = [
 "Connecting to encrypted signal...",
 "Signal acquired.",
 "Decoding base64 payload...",
-"",
-"R29vZC4gVGhlIG1lc3NhZ2UgaXMgaW5jb21wbGV0ZS4=",
-"",
+
+"R29vZC4gVGhlIG1lc3NhZ2UgaXMgaW5jb21wbGV0ZS4KU2Vjb25kYXJ5IGVuY3J5cHRpb24gZGV0ZWN0ZWQuClJPVC03IHJlcXVpcmVkLg==",
+
 "Decoding complete.",
-"",
+
 "Secondary encryption detected.",
-"ROT-7 REQUIRED."
+"ROT-7 REQUIRED.",
+
+"Encrypted key detected: psveffvu"
 ];
 
 let i = 0;
@@ -48,7 +50,7 @@ function typeLine() {
     i++;
     setTimeout(typeLine, 900);
   } else {
-    showInput();
+    setTimeout(showInput, 500);
   }
 }
 
@@ -64,7 +66,7 @@ function showInput() {
 function check() {
   let input = document.getElementById("answer").value.toLowerCase();
 
-  if (input.includes("rot") || input.includes("7")) {
+  if (input === "iloveyou") {
     window.location.href = "level3.html";
   } else {
     alert("ACCESS DENIED");
